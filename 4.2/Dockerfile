@@ -1,4 +1,4 @@
-FROM ruby:2.7-slim-bullseye
+FROM --platform=linux/arm64 ruby:2.7-slim-bullseye
 
 # explicitly set uid/gid to guarantee that it won't change in the future
 # the values 999:999 are identical to the current user/group id assigned
@@ -45,7 +45,7 @@ RUN set -eux; \
 
 ENV REDMINE_VERSION 4.2.11
 ENV REDMINE_DOWNLOAD_URL https://www.redmine.org/releases/redmine-4.2.11.tar.gz
-ENV REDMINE_DOWNLOAD_SHA256 1f2a9a14e36002ff028ff9677deb9909670a25f9
+ENV REDMINE_DOWNLOAD_SHA256 de4ce017c2ad0af94b2941259f356094f369b1b2c621b5a1dd8984a2cf10dc25
 
 RUN set -eux; \
 # if we use wget here, we get certificate issues (https://github.com/docker-library/redmine/pull/249#issuecomment-984176479)
